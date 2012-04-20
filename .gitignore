@@ -1,0 +1,10 @@
+*.pyc
+/lib
+/build
+/include
+/bin
+/lib64
+/src
+/share
+/man
+.Python
