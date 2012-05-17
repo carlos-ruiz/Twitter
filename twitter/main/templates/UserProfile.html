@@ -1,38 +1,33 @@
 <html>
 <head>
 	<title>User Profile</title>
-</style>
+	<script type="text/javascript" src="{{ STATIC_URL }}jquery-1.7.1.min.js"></script>
+	 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}estipro.css">
+
 </head>
+
 <body>
-<div id="header" class="logo">		
-	{% if user.is_authenticated %}
-	    <p><a href="/login">Login</a> </p>
-	
-	{% else %} 	
-	    <p> <a href="/logout">Logout</a></p>
-        <p> <a href="/edit">Edit Profile</a></p> 
-        <p> <a href="/account">My Account</a>
-        <br>
-        <div > Your Profile</div>
-        <br>
-        <div>
-	        <table border="1"  align="left">
-		    <tr> 
-			    <td width="130" height="130"> Here will be your pic </td> 
-            </tr>
-	        </table>
-	    </div>
+	<div id=menu>
+	{% if user.is_authenticated %}  <a href="/login"> Login </a> {% else %}  <a href="/logout">Logout {% endif %}
+	<a href="/account">Session</a>
+	<a href="/edit">Edit Profile</a> 
 
+<div id="header">
+	<div id="principal">
+		<table border="1"  align="center">
+		<tr> 
+			<td width="130" height="130"> Here pic </td> 
+				
+		</tr>
 
-	<div> Your Information </div>
-	<br>
-	<div> Username:      {{ user.user.username }} </div>
-	<div> e-mail:        {{ user.user.email }} </div>
-	<div> Birthday:      {{ user.birthday }}  </div>
-	<div> Location:      {{ user.location }}  </div>
-	<div> Bio:           {{ user.bio }}  </div>
-	
-	{% endif %}
+		</table>
+		<p> Your Information: </p>
+		<p> Username:      {{ user.user.username }} </p>
+		<p> e-mail:        {{ user.user.email }} </p>
+		<p> Birthday:      {{ user.birthday }}  </p>
+		<p> Location:      {{ user.location }}  </p>
+		<p> Bio:           {{ user.bio }}  </p>
+	</div>
 </div>
 </body>
 </html>

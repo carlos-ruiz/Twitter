@@ -7,7 +7,6 @@ from main.forms import UserCreateForm, LoginForm, EditProfileForm, TweetForm
 from django.contrib.auth.models import User
 from django.core.context_processors import csrf
 
-
 def home(request):
     if request.user.is_authenticated():
         return redirect('account')
@@ -36,6 +35,7 @@ def Registration(request):
             context = {'form': form}
             return render_to_response('register.html', context, context_instance=RequestContext(request))
 
+
 def LoginRequest(request):
         if request.user.is_authenticated():
                 return HttpResponseRedirect('profile')
@@ -58,27 +58,36 @@ def LoginRequest(request):
                 context = {'form': form}
                 return render_to_response('home.html', context, context_instance=RequestContext(request))
 
-def account(request):
-    if not request.user.is_authenticated():
-            return HttpResponseRedirect('/')
-    users = request.user.get_profile
-    context = {'users': users}
-    return render_to_response('account.html', context, context_instance=RequestContext(request))
+def LogoutRequest(request):
+        logout(request)
+        return HttpResponseRedirect('/')
 
+def account(request):
+    form = TweetForm()
+    if request.method == 'POST':
+        form = TweetForm(request.POST)
+        if form.is_valid():
+            user = UserProfile.objects.get(user=request.user)
+            tweet = Tweet(owner=user, status=form.cleaned_data['status'])
+            tweet.save()
+            return redirect('account')
+    if request.user.is_authenticated():
+        users = request.user.get_profile
+        context = {'users': users}
+        return render_to_response('account.html', context, context_instance=RequestContext(request))
+    else:
+        return HttpResponseRedirect('/')
+    
 def profile(request):
     if request.user.is_authenticated():
         users = request.user.get_profile
         usr = UserProfile.objects.get(user=request.user)
         context = {'user': usr, 'users': users}
         return render_to_response('UserProfile.html', context, context_instance=RequestContext(request))
-        
     else:
-        return HttpResponseRedirect('/login/')
+        return HttpResponseRedirect('/accounts/login/')
+    
 
-
-def LogoutRequest(request):
-        logout(request)
-        return HttpResponseRedirect('/')
 
 def editProfile(request):
     if request.user.is_authenticated():
@@ -95,15 +104,21 @@ def editProfile(request):
         return render_to_response('editProfile.html', dic)
     return redirect('login')
 
+
 def newTweet(request):
-    form = TweetForm
+    form = TweetForm()
     if request.method == 'POST':
         form = TweetForm(request.POST)
         if form.is_valid():
+ #            stat = form.cleaned_data['status']
             user = UserProfile.objects.get(user=request.user)
             tweet = Tweet(owner=user, status=form.cleaned_data['status'])
             tweet.save()
+ #            user.tweet(status)
             return redirect('account')
     return render_to_response('newTweet.html', {
         'form': form,
         }, RequestContext(request))
+
+#, username=user.user.username
+

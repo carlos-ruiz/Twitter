@@ -15,47 +15,47 @@
 				{% if form.errors %}<p>Please correct the following fucking fields:</p>{% endif %}
 					<div>
 						{% if form.name.errors %}<p class="error">{{ form.name.errors }}</p>{% endif %}
-						<p> <label for="name"{% if form.name.errors %} class="error" {% endif %}>Name:</label> {{ form.name }} </p>
+						<p align="right"> <label for="name"{% if form.name.errors %} class="error" {% endif %}>Name:</label> {{ form.name }} </p>
 					</div>	
 
 					<div>
 						{% if form.birthday.errors %}<p class="error">{{ form.birthday.errors }}</p>{% endif %}
-						<p> <label for="birthday"{% if form.birthday.errors %} class="error" {% endif %}>Birthday:</label> {{ form.birthday }} </p>
+						<p align="right"> <label for="birthday"{% if form.birthday.errors %} class="error" {% endif %}>Birthday (yyyy-mm-dd):</label> {{ form.birthday }} </p>
 					</div>
 
 					<div>
 						{% if form.location.errors %}<p class="error">{{ form.location.errors }}</p>{% endif %}
-						<p> <label for="location"{% if form.location.errors %} class="error" {% endif %}>Location:</label> {{ form.location }} </p>
+						<p align="right"> <label for="location"{% if form.location.errors %} class="error" {% endif %}>Location:</label> {{ form.location }} </p>
 					</div>
 
 					<div>
 						{% if form.bio.errors %}<p class="error">{{ form.bio.errors }}</p>{% endif %}
-						<p> <label for="bio"{% if form.bio.errors %} class="error" {% endif %}>Biography:</label> {{ form.bio }} </p>
+						<p align="right"> <label for="bio"{% if form.bio.errors %} class="error" {% endif %}>Biography:</label> {{ form.bio }} </p>
 					</div>
 
 					<div>
 						{% if form.private.errors %}<p class="error">{{ form.private.errors }}</p>{% endif %}
-						<p> <label for="private"{% if form.private.errors %} class="error" {% endif %}>Private:</label> {{ form.private }} </p>
+						<p align="right"> <label for="private"{% if form.private.errors %} class="error" {% endif %}>Private:</label> {{ form.private }} </p>
 					</div>
 
 					<div>
 						{% if form.username.errors %}<p class="error">{{ form.username.errors }}</p>{% endif %}
-						<p> <label for="username"{% if form.username.errors %} class="error" {% endif %}>User name:</label> {{ form.username }} </p>
+						<p align="right"> <label for="username"{% if form.username.errors %} class="error" {% endif %}>User name:</label> {{ form.username }} </p>
 					</div>
 
 					<div>
 						{% if form.email.errors %}<p class="error"> {{ form.email.errors }} </p> {% endif %}
-						<p> <label for="email"{% if form.email.errors %} class="error" {% endif %}>e-mail:</label> {{ form.email }} </p>
+						<p align="right"> <label for="email"{% if form.email.errors %} class="error" {% endif %}>e-mail:</label> {{ form.email }} </p>
 					</div>
 
 					<div>
 						{% if form.password1.errors %}<p class="error"> {{ form.password1.errors }} </p> {% endif %}
-						<p> <label for="password1"{% if form.password1.errors %} class="error" {% endif %}>Password:</label> {{ form.password1 }} </p>
+						<p align="right"> <label for="password1"{% if form.password1.errors %} class="error" {% endif %}>Password:</label> {{ form.password1 }} </p>
 					</div>
 
 					<div>
 						{% if form.password2.errors %}<p class="error"> {{ form.password2.errors }} </p> {% endif %}
-						<p> <label for="password2"{% if form.password2.errors %} class="error" {% endif %}>Password (again):</label> {{ form.password2 }} </p>
+						<p align="right"> <label for="password2"{% if form.password2.errors %} class="error" {% endif %}>Password (again):</label> {{ form.password2 }} </p>
 					</div>
 					<p> <input type="submit" alt="Register"/> </p>
 			</form>

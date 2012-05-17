@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div>
+		<p>
+		{{ tweet.status}}
+		</p>
+		<p>
+		{{ tweet.date}}
+		</p>
+		<p>
+			<a href="{% url profile tweet.owner.user.username %}">
+		@{{ tweet.owner.user.username }}</a>
+		</p>
+	</div>
+</body>
+</html>

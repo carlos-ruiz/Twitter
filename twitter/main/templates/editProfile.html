@@ -1,9 +1,22 @@
 <html>
 <head>
 	<title>Edit Profile</title>
+	<script type="text/javascript" src="{{ STATIC_URL }}jquery-1.7.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/static/estipro.css">
+
 </head>
-<body>
-	<form method="POST">
+
+<body id='body'>
+<div id=menu>
+	<a href="/profile">Back</a> 
+    <a href="/account">Session</a>
+	<div id="header">
+	</div>	
+</div>
+
+<br>
+<p> Now you can change your information. </p>
+<form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit"/>

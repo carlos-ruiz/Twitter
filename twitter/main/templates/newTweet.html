@@ -1,12 +1,29 @@
 <html>
 <head>
-	<title></title>
+	<title>New Twitter</title>
+	<script type="text/javascript" src="{{ STATIC_URL }}jquery-1.7.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/estipro.css">
+
 </head>
 <body>
-    <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit"/>
-</form>
+	<div id=menu>
+        <a href="/account">Back</a> 
+    </div>
+
+    <div id="header">
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+	<div> what's thinking??? </div>
+
+	<form method="POST">
+    	{% csrf_token %}
+    	{{ form.as_p }}
+    	<input type="submit"/>
+	</form>
 </body>
+
 </html>

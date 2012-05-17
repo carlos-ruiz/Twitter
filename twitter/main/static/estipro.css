@@ -1,0 +1,25 @@
+#header{
+	margin: 0px 0px;
+	color: black;
+	height: 65px;
+	width: 1280px;
+	text-align: center;
+	background-image: url("/static/log2.jpeg") ;
+}
+
+#menu{
+	margin: 0px 0px 2px 0px;
+}
+
+#menu a{
+	padding: 0px 0px 0px 20px;
+}
+
+#principal{
+	padding: 150px 0px 10px 0px;
+}
+
+#principal p{
+	color:#000;
+}
+
