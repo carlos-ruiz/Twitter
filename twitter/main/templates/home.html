@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>Register User</title>
+	<script type="text/javascript" src="{{ STATIC_URL }}jquery-1.7.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}estilo.css">
+</head>
+<body id="body">
+<div id="header">Welcome to twitter</div>
+<div id="table" align="right">
+<table border="2" width="400">
+	<tr> <td align="center"> 
+		{% block content %}
+			<form action="" method="post">
+				{% csrf_token %}
+				{% if form.errors %}<p>Please correct the following fields:</p>{% endif %}	
+					<div>
+						{% if form.username.errors %}<p class="error">{{ form.username.errors }}</p>{% endif %}
+						<p> <label for="username"{% if form.username.errors %} class="error" {% endif %}>Username:</label> </p>
+						<p> {{ form.username }} </p>
+					</div>
+					<div>
+						{% if form.password.errors %}<p class="error"> {{ form.password.errors }} </p> {% endif %}
+						<p> <label for="password"{% if form.password.errors %} class="error" {% endif %}>Password:</label> </p>
+						<p> {{ form.password }} </p>
+					</div>
+					<p> <input type="submit" alt="register"/> </p>
+			</form>
+		{% endblock %}
+		<p><a href="{% url Registration %}">Register now!</a></p>
+		<p>Forgot your password?<a href="#">Reset it!</a></p>
+	 </td></tr>
+</table>
+
+</div>
+</body>
+</html>

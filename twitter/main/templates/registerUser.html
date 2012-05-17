@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title> Add User </title>
+</head>
+<body>
+	<div id="header" class="logo"></div>
+	<table border="1" align="center" width="800" class="content">
+
+
+	<tr> <td> </td>  </tr> 
+	<tr> <td align="center"> Unete hoy a My twitter </td>  </tr> 
+	<tr> <td>
+		<form method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit"/>
+	</form>
+	
+	 </td>  </tr>
+<tr> <td> <a href="{% url LoginRequest %}">Principal</a> </td>  </tr> 
+	    </table>
+</body>
+</html>

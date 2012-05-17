@@ -1,0 +1,72 @@
+#body{
+	margin: auto;
+	color: white;
+	height: 750px;
+	width: 1280px;
+	text-align: center;
+	background-image: url("/static/tw1.jpg");
+}
+
+#header{
+	margin: auto;
+	color: white;
+	height: 50px;
+	width: 1280px;
+	text-align: center;
+	background-color: black;
+}
+
+#table{
+	position: absolute;
+	left: 65%;
+	top: 30%;
+	color: white;
+	height: 700px;
+	width: 400px;
+	text-align: center;
+}
+
+#register{
+	position: relative;
+	left: 65%;
+	top: 5%;
+	background-image: url("/static/tw1.jpg");
+	color: white;
+	height: 700px;
+	width: 400px;
+	text-align: center;
+}
+
+/*Estilo para los menús de la template Account*/
+#menu{
+	padding-top: 15px;
+	color: white;
+	height: 50px;
+	width: 1280px;
+	text-align: center;
+	background-color: black;
+}
+
+#menu li{
+	list-style: none;
+  	display: inline;
+  	margin-top:10px;
+
+
+}
+
+#menu li a {
+	padding: 5px 0px 5px 0px;
+  list-style: none;
+  background-color: #99CCCC;
+  border: 1px solid #0000FF;
+  color: #000;
+  font-family: Verdana,Arial,Helvetica; 
+  font-size: 16px;
+}
+
+#menu li a:hover {
+  background-color: #003399;
+  border-color: #FFF;
+  color: #FFCC00;
+}

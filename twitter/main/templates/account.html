@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>My Account</title>
+		<script type="text/javascript" src="{{ STATIC_URL }}jquery-1.7.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}estipro.css">
+	</head>
+
+	<body>
+		<div id="header">
+			<br>
+			{% if user.is_authenticated %}
+			<p align="right"> <a href="/logout">Logout</a></p>
+			<p align="right"> <a href="/newtweet">Tweets</a></p>
+			<p align="left"><a href="#">@{{ user.username }}</a></p>
+			{% else %}<p><a href="/login">Login</a> </p> 
+			{% endif %}
+		</div>
+		<div> 
+	     <br>
+	     <br>
+	     <br>
+	     <br>
+
+        </div>
+
+						
+		
+<table border="1"  align="center">
+	<tr> <td width="130" height="130"> Here pic </td> 
+		<td> 
+			<table border="1"  align="left">
+				<tr> <td> 
+				<p> <a href="/profile"> View profile</a> </p>  
+				</td> </tr>
+				<tr> <td class="td2"> <p> Seguidores </p>  </td> </tr>
+			</table>
+		</td> 
+		<td> 
+			<table border="1" class="width_tableProfile1" align="left">
+				<tr> <td width="400" height="130"> twittear </td> </tr>
+				<tr> <td  width="400" height="300"> <p> Tweet </p>  </td> </tr>
+			</table>
+		</td>
+	</tr>
+
+	<div> </div>
+</table>
+</body>
+</html>

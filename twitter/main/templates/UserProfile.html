@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>User Profile</title>
+</style>
+</head>
+<body>
+<div id="header" class="logo">		
+	{% if user.is_authenticated %}
+	    <p><a href="/login">Login</a> </p>
+	
+	{% else %} 	
+	    <p> <a href="/logout">Logout</a></p>
+        <p> <a href="/edit">Edit Profile</a></p> 
+        <p> <a href="/account">My Account</a>
+        <br>
+        <div > Your Profile</div>
+        <br>
+        <div>
+	        <table border="1"  align="left">
+		    <tr> 
+			    <td width="130" height="130"> Here will be your pic </td> 
+            </tr>
+	        </table>
+	    </div>
+
+
+	<div> Your Information </div>
+	<br>
+	<div> Username:      {{ user.user.username }} </div>
+	<div> e-mail:        {{ user.user.email }} </div>
+	<div> Birthday:      {{ user.birthday }}  </div>
+	<div> Location:      {{ user.location }}  </div>
+	<div> Bio:           {{ user.bio }}  </div>
+	
+	{% endif %}
+</div>
+</body>
+</html>

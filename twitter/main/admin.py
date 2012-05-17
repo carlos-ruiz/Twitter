@@ -1,13 +1,13 @@
 from django.contrib import admin
-from main.models import User, Tweet
+from main.models import UserProfile, Tweet
 
 
-class UserAdmin(admin.ModelAdmin):
-	list_display = ('name',)
-	search_fields = ('name',)
+class UserProfileAdmin(admin.ModelAdmin):
+	list_display = ('user', 'name', 'birthday',)
+	search_fields = ('user',)
 
 class TweetAdmin(admin.ModelAdmin):
-	list_display = ('status', 'user',)
+	list_display = ('owner', 'status',)
 
-admin.site.register(User, UserAdmin)
+admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Tweet, TweetAdmin)
