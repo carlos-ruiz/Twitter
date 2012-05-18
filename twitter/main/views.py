@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render_to_response, redirect, get_object_or_404
 from main.models import UserProfile, Tweet
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
@@ -9,7 +9,7 @@ from django.core.context_processors import csrf
 
 def home(request):
     if request.user.is_authenticated():
-        return redirect('account')
+        return redirect('/account')
     else:
         return render_to_response('home.html', {
     }, RequestContext(request))
@@ -38,7 +38,7 @@ def Registration(request):
 
 def LoginRequest(request):
         if request.user.is_authenticated():
-                return HttpResponseRedirect('profile')
+                return HttpResponseRedirect('/profile')
         if request.method == 'POST':
                 form = LoginForm(request.POST)
                 if form.is_valid():
@@ -63,17 +63,11 @@ def LogoutRequest(request):
         return HttpResponseRedirect('/')
 
 def account(request):
-    form = TweetForm()
-    if request.method == 'POST':
-        form = TweetForm(request.POST)
-        if form.is_valid():
-            user = UserProfile.objects.get(user=request.user)
-            tweet = Tweet(owner=user, status=form.cleaned_data['status'])
-            tweet.save()
-            return redirect('account')
     if request.user.is_authenticated():
         users = request.user.get_profile
-        context = {'users': users}
+        usr = UserProfile.objects.get(user=request.user)
+        tweets = Tweet.objects.filter(owner=usr)
+        context = {'users': users, 'tweet': tweets,}        
         return render_to_response('account.html', context, context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect('/')
@@ -106,19 +100,42 @@ def editProfile(request):
 
 
 def newTweet(request):
-    form = TweetForm()
+    form = TweetForm
     if request.method == 'POST':
         form = TweetForm(request.POST)
         if form.is_valid():
- #            stat = form.cleaned_data['status']
             user = UserProfile.objects.get(user=request.user)
             tweet = Tweet(owner=user, status=form.cleaned_data['status'])
             tweet.save()
- #            user.tweet(status)
             return redirect('account')
     return render_to_response('newTweet.html', {
         'form': form,
         }, RequestContext(request))
 
-#, username=user.user.username
+def editTweet(request, pk):
+    tweet = get_object_or_404(Tweet, pk=pk)
+    form = TweetForm(instance=tweet)
+    if request.method == 'POST':
+        form = TweetForm(request.POST, instance=tweet)
+        if form.is_valid():
+            form.save()
+            return redirect('account')
+    return render_to_response('newTweet.html', {
+        'form': form,
+    }, RequestContext(request))
 
+def deleteTweet(request, pk):
+    Tweet.objects.filter(pk=pk).delete()
+    return redirect('account')
+
+def editUser(request, pk):
+    user = get_object_or_404(UserProfile, pk=pk)
+    form = EditProfileForm (instance=user)
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('account')
+    return render_to_response('editProfile.html', {
+        'form': form,
+    }, RequestContext(request))
