@@ -8,3 +8,4 @@
 /share
 /man
 .Python
+twitter/secrets.py
